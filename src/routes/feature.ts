@@ -3,9 +3,17 @@ import express from 'express'
 import { IUserFeatureCreateDTO, IUserFeatureSelectDTO } from '../dto/IUserFeature'
 import { getUserFeature, createUserFeature } from '../services/feature'
 
+import { validate } from '../validators/feature.base'
+import { 
+  validationRules as featureGetValidationRules
+} from '../validators/feature.getValidate'
+import {
+  validationRules as featureCreateValidationRule
+} from '../validators/feature.createValidate'
+
 const router = express.Router()
 
-router.get('/', (req, res) => {
+router.get('/', featureGetValidationRules(), validate, (req, res) => {
   const {
     email,
     featureName,
@@ -21,10 +29,10 @@ router.get('/', (req, res) => {
   })
 })
 
-router.post('/', (req, res) => {
+router.post('/', featureCreateValidationRule(), validate, (req, res) => {
   const {
-    featureName,
     email,
+    featureName,
     enabled = false
   } : IUserFeatureCreateDTO = req.body
 

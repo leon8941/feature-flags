@@ -4,6 +4,12 @@ import { IUserFeatureCreateDTO, IUserFeatureSelectDTO } from '../dto/IUserFeatur
 
 const prisma = new PrismaClient()
 
+export const getFeature = (name: string) => prisma.feature.findFirst({
+  where: {
+    name,
+  }
+})
+
 export const getUserFeature = (payload: IUserFeatureSelectDTO) => {
   const {
     email,
