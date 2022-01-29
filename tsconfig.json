@@ -28,9 +28,7 @@
         "rootDir": "./"
     },
     "include": [
-        "index.*",
         "src/**/*", // *** The files TypeScript should type check ***
-        "app.ts"  
     ],
     "exclude": ["node_modules", "build"]
 }
