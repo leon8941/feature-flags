@@ -3,17 +3,15 @@ import express from 'express'
 import { IUserFeatureCreateDTO, IUserFeatureSelectDTO } from '../dto/IUserFeature'
 import { getUserFeature, createUserFeature } from '../services/feature'
 
-import { validate } from '../validators/feature.base'
-import { 
-  validationRules as featureGetValidationRules
-} from '../validators/feature.getValidate'
 import {
-  validationRules as featureCreateValidationRule
-} from '../validators/feature.createValidate'
+  baseRules,
+  getValidationRules,
+  createValidationRules,
+} from '../validators'
 
 const router = express.Router()
 
-router.get('/', featureGetValidationRules(), validate, (req, res) => {
+router.get('/', getValidationRules.validationRules(), baseRules.validate, (req, res) => {
   const {
     email,
     featureName,
@@ -22,14 +20,14 @@ router.get('/', featureGetValidationRules(), validate, (req, res) => {
   getUserFeature({ email, featureName }).then((dbResponse) => {
     res.status(200)
       .send({
-        canAccess: dbResponse ? true : false
+        canAccess: dbResponse ? dbResponse.enabled : false
       })
   }).catch(() => {
     res.sendStatus(502)
   })
 })
 
-router.post('/', featureCreateValidationRule(), validate, (req, res) => {
+router.post('/', createValidationRules.validationRules(), baseRules.validate, (req, res) => {
   const {
     email,
     featureName,
