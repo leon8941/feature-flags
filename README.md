@@ -6,7 +6,7 @@
 - ### src/
   - #### dto
 
-    Stands for Data Transfer Object, basicall the shape of payload transferred to / from clients are defined here as Interface / Type.
+    Stands for Data Transfer Object, basically the shape of payload transferred to / from clients are defined here as Interface / Type.
 
   - #### routes
   
