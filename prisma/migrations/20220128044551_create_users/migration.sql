@@ -44,7 +44,15 @@ ALTER TABLE "user_features" ADD CONSTRAINT "user_features_user_id_fkey" FOREIGN 
 ALTER TABLE "user_features" ADD CONSTRAINT "user_features_feature_id_fkey" FOREIGN KEY ("feature_id") REFERENCES "features"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 INSERT INTO "users" ("email", "password", "name", "created_at", "updated_at")
-VALUES ('admin@email.com', '123456', 'Admin', now(), now());
+VALUES ('admin@email.com', '123456', 'Admin', now(), now()),
+('john@email.com', '123456', 'John', now(), now()),
+('ellie@email.com', '123456', 'Ellie', now(), now());
 
 INSERT INTO "features" ("name", "code", "created_at", "updated_at")
-VALUES ('Manage User', 'MU', now(), now()), ('Manage Order', 'MO', now(), now()), ('Manage Promotion', 'MPM', now(), now()), ('Manage Products', 'MPD', now(), now());
+VALUES ('Manage User', 'MU', now(), now()),
+('Manage Order', 'MO', now(), now()),
+('Manage Promotion', 'MPM', now(), now()),
+('Manage Cart', 'MC', now(), now()),
+('Manage Credits', 'MCD', now(), now()),
+('Manage Subscribers', 'MSB', now(), now()),
+('Manage Products', 'MPD', now(), now());

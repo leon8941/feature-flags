@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "prisma:reset": "npx prisma migrate reset",
     "prisma:migrate": "npx prisma migrate dev",
     "prisma:init": "npx prisma init",
     "dev": "nodemon src/app.ts",
